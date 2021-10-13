@@ -12,7 +12,7 @@ public class Employ {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer age;
+    //private Integer age;
     private String location;
 
     public Long getId() {
@@ -31,7 +31,7 @@ public class Employ {
         this.name = name;
     }
 
-    public Integer getAge() {
+   /* public Integer getAge() {
         return age;
     }
 
@@ -39,7 +39,7 @@ public class Employ {
         this.age = age;
     }
 
-
+*/
 
     public String getLocation() {
         return location;

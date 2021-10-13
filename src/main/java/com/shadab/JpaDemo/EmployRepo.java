@@ -1,13 +1,15 @@
 package com.shadab.JpaDemo;
 
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-public interface EmployRepo extends CrudRepository<Employ,Long> {
-    List<Employ> FindByName(String name);
-    List<Employ> FindByFDescLike(String desc);
+public interface EmployRepo extends PagingAndSortingRepository<Employ,Long> {
+    List<Employ> findByName(String srk);
+   /*List<Employ> findByName(String name);
+    List<Employ> findByDescLike(String desc);
 
 
-    List<Employ> FindByName(int i, int i1);
+    List<Employ> findByName(int i, int i1);*/
 }

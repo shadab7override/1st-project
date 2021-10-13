@@ -26,13 +26,13 @@ public class JpaDemoApplicationTests {
 	@Test
 	public void testCreateEmploy() {
 		Employ employ = new Employ();
-		//employ.setId(7);
-		employ.setName("Arjun");
-		employ.setAge(30);
+
+		employ.setName("Tony");
 		employ.setLocation("Delhi");
 		er.save(employ);
+
 	}
-	@Test
+@Test
 	public void testRead(){
 
 		Employ emp=er.findById(1l).get();
@@ -56,27 +56,28 @@ public class JpaDemoApplicationTests {
 
 	@Test
 	public void testFindByName(){
-		List<Employ> emp=er.FindByName("srk");
+		List<Employ> emp=er.findByName("srk");
 		emp.forEach(p -> System.out.print(p.getName()));
 
 	}
 	@Test
-	public void FindByFDescLike(){
-		List<Employ> emp=er.FindByName("%A%");
+	public void findByDescLike(){
+		List<Employ> emp=er.findByName("%A%");
 		emp.forEach(p -> System.out.print(p.getName()));
 
 	}
 	@Test
-	public void FindByFDescAge(){
-		List<Employ> emp=er.FindByName(28,32);
+	public void findByDescAge(){
+		List<Employ> emp=er.findByName("Tony");
 		emp.forEach(p -> System.out.print(p.getName()));
 
 	}
 
-	@Test
+	/*@Test
 	public void testFindAllpagingAndSorting(){
-		//Pageable pageable =new PageRequest(0,1, Sort.Direction.DESC,"name");
-		//er.findAll(pageable).forEach(p -> System.out.println(p.getName()));
+		Pageable pageable =new PageRequest(0,1, Sort.Direction.DESC,"name");
+		er.findAll(pageable).forEach(p -> System.out.println(p.getName()));
 
-	}
+	}*/
+
 }
