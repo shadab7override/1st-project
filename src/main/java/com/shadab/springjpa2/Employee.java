@@ -5,20 +5,21 @@ import javax.persistence.*;
 @Entity
 //@Table(name="employee")
 public class Employee {
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="empId,")
+    //@Column(name="empId")
     private Integer id;
 
-    @Column(name="empFirstName")
+   //@Column(name="empFirstName")
     private String firstname;
 
-    @Column(name="empLastName,")
+    //@Column(name="empLastName,")
     private String lasttname;
 
-    @Column(name="empSalary")
+    //@Column(name="empSalary")
     private Integer salary;
 
-    @Column(name="empAge")
+    //@Column(name="empAge")
     private Integer age;
 
     public Integer getId() {

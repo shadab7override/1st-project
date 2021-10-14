@@ -7,6 +7,7 @@ import java.util.List;
 
 @SpringBootTest
 public class Springjpa2ApplicationTests {
+
 	@Autowired
 	EmployeeRepo Repo;
 
@@ -18,33 +19,46 @@ public class Springjpa2ApplicationTests {
 	@Test
 	public void Ecreate() {
 		Employee e = new Employee();
-		e.setId(6);
+
 		e.setFirstname("md");
 		e.setLasttname("shadab");
 		e.setSalary(100000);
 		e.setAge(19);
+
+
+		Employee e1 = new Employee();
+
+		e1.setFirstname("Sam");
+		e1.setLasttname("Aryan");
+		e1.setSalary(10000);
+		e1.setAge(10);
+
+		Repo.save(e);
+		Repo.save(e1);
 	}
+	@Test
+	public void findBySalAvgTest(){
+		System.out.println(Repo.findBySalaryGreaterThanJPQL());
+	}
+	@Test
+	public void findingAllEmployeeTest(){
+		System.out.println(Repo.findAllEmployee());
+	}
+/*	@Test
+	public void updateSalaryTest(){
+		System.out.println(Repo.updateSalary(1000));
+	}*/
 
 	@Test
-	public void findByNameTest() {
-		List<Employee> emp = Repo.findByName(1000);
-		emp.forEach(e -> {
-			System.out.print(e);
-		});
-	}
+	public void findBylastAgeTest() {
+		System.out.println(Repo.deleteStudentsbyAge(20));
 
-	@Test
-	public void updateBySalaryTest() {
-		List<Employee> emp = Repo.findBySalary(1000);
-		emp.forEach(e -> {
-			System.out.println(e);
-		});
-	}
 
+
+	}
 	@Test
-	public String deleteEmployee() {
-		Repo.deleteStudentsbyFirstName("A1");
-		return "Deleted";
+	public void deleteMinSalaryTest(){
+		System.out.println(Repo.deleteMinSalary());
 	}
 
 	@Test
@@ -56,11 +70,5 @@ public class Springjpa2ApplicationTests {
 
 	}
 
-	@Test
-	public void findBylastAgeTest() {
-		System.out.println(Repo.deleteStudentsbyAge(20));
 
-
-
-	}
 }
