@@ -1,5 +1,5 @@
 /*
-package com.shadab.Ecommerce;
+package com.shadab.Ecommerce.Orders;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,15 +13,21 @@ public class OrderProduct {
     private Double price;
     private Long productValidationId;
 
-    @OneToOne(mappedBy = "OrderProduct")
-    private Order order;
+  */
+/*  @OneToOne(mappedBy = "OrderProduct")
+    private Order order;*//*
 
-    @OneToMany(mappedBy = "OrderProduct")
-    private Set<ProductVariation> productVariations;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "orderProductId")
-    private OrderStatus orderStatus;
+ */
+/*   @OneToMany(mappedBy = "OrderProduct")
+    private ProductVariation productVariations;*//*
+
+
+  */
+/*  @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id")
+    private OrderStatus orderStatus;*//*
+
 
     public Long getId() {
         return id;

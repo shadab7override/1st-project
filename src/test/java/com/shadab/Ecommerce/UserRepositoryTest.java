@@ -18,10 +18,12 @@ public class UserRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
 
-    public UserRepositoryTest() {
-    }
 
     @Test
+    public  void UserRepositoryTest() {
+    }
+/*
+ @Test
     public void testCreateUser(){
         User user= new User();
         user.setFirstName("Md");
@@ -34,7 +36,8 @@ public class UserRepositoryTest {
        User existUser= entityManager.find(User.class,savedUser.getUid());
         assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
 
-    }
+    }*/
+
 
     @Test
     public void testFindByEmail(){

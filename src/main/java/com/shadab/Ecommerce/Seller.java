@@ -1,10 +1,7 @@
 /*
 package com.shadab.Ecommerce;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -15,28 +12,27 @@ public class Seller {
     private String companyContact;
     private String companyName;
 
-    @ManyToOne
-    @JoinColumn(name="uid")
-    private Set<User> user;
+    @OneToOne
+    @JoinColumn(name="userId")
+    private User user;
 
-    @ManyToOne
+ */
+/*
+  @ManyToMany
     @JoinColumn(name="id")
     private Set<Product> products;
 
-    public Seller(Long userId, Double gst, String companyContact, String companyName) {
-        this.userId = userId;
+    *//*
+
+
+    public Seller( Double gst, String companyContact, String companyName) {
+
         this.gst = gst;
         this.companyContact = companyContact;
         this.companyName = companyName;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public Double getGst() {
         return gst;

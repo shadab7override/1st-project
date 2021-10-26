@@ -1,3 +1,4 @@
+
 package com.shadab.Ecommerce;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,3 +19,5 @@ public class CustomUserDetailService implements UserDetailsService {
         return new CustomUserDetail(user);
     }
 }
+
+

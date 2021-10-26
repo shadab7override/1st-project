@@ -11,6 +11,9 @@
     <div>
         <h3> <a th:href="@{/login}">Click here to login</a> </h3>
     </div>
+    <center>
+        <span th:text="'A verification email has been sent to: ' + ${emailId}"></span>
+    </center>
 </div>
 </body>
 </html>

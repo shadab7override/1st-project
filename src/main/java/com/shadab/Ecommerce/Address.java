@@ -3,6 +3,7 @@ package com.shadab.Ecommerce;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -14,9 +15,12 @@ public class Address {
     private String  addressLine;
     private Integer zipId;
     private String  label;
-    private Integer userId;
 
-    public Address(Long id, String city, String state, String country, String addressLine, Integer zipId, String label, Integer userId) {
+
+    @OneToOne(mappedBy="address")
+    private User userId;
+
+    public Address(Long id, String city, String state, String country, String addressLine, Integer zipId, String label, User userId) {
         this.id = id;
         this.city = city;
         this.state = state;
@@ -24,6 +28,14 @@ public class Address {
         this.addressLine = addressLine;
         this.zipId = zipId;
         this.label = label;
+        this.userId = userId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
@@ -83,12 +95,6 @@ public class Address {
         this.label = label;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 }
 */

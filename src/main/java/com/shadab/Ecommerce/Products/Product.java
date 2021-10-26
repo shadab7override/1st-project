@@ -16,22 +16,26 @@ public class Product {
     private String description;
     private Long categoryId;
 
-    @OneToMany(mappedBy = "Product")
+    @ManyToMany(mappedBy = "product")
     private Set<Seller> sellers;
 
-    @OneToMany(mappedBy = "Category")
+  */
+/*  @OneToMany(mappedBy = "Category")
     private Set<Category> categories;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id", referencedColumnName = "productId")
     private ProductVariation productVariation;
+*//*
 
-    @ManyToMany
+    */
+/*@ManyToMany
     @JoinTable(
             name = "CategoryMetaFieldValues",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "customerUserId"))
-    private Set<ProductReview> productReviews;
+    private Set<ProductReview> productReviews;*//*
+
 
 
     public boolean isCancdeled(){

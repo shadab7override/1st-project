@@ -1,5 +1,5 @@
 /*
-package com.shadab.Ecommerce;
+package com.shadab.Ecommerce.Orders;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,8 +13,10 @@ public class OrderStatus {
     private String toStatus;
     private String transitionNotesComment;
 
-    @OneToOne(mappedBy = "OrderStatus ")
+  */
+/*  @OneToOne(mappedBy = "OrderStatus")
     private OrderProduct orderProduct;
+*//*
 
     public OrderStatus(Long orderProductId, String fromStatus, String toStatus, String transitionNotesComment) {
         this.orderProductId = orderProductId;

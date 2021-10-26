@@ -1,5 +1,5 @@
 /*
-package com.shadab.Ecommerce;
+package com.shadab.Ecommerce.Orders;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -7,7 +7,7 @@ import java.util.Set;
 public class Order {
     @Id
     private Long id;
-    private Long customerUserId;
+
     private Double amountPaid;
     private String date;
     private String paymentMethod;
@@ -18,16 +18,21 @@ public class Order {
     private Integer  customerAddressZipcode;
     private String   customerAddressLabel;
 
-    @OneToOne(mappedBy = "Order")
-    private Customer customers;
+   */
+/* @OneToOne
+    @JoinColumn(name = "customer_user_id")
+    private Customer customers;*//*
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "id")
-    private OrderProduct orderProduct;
 
-    public Order(Long id, Long customerUserId, Double amountPaid, String date, String paymentMethod, String customerAddressCity, String customerAddressState, String customerAddressCountry, String customerAddressCityCountryLine, Integer customerAddressZipcode, String customerAddressLabel) {
+   */
+/* @OneToOne
+    @JoinColumn(name = "id")
+    private OrderProduct orderProduct;*//*
+
+
+    public Order(Long id,  Double amountPaid, String date, String paymentMethod, String customerAddressCity, String customerAddressState, String customerAddressCountry, String customerAddressCityCountryLine, Integer customerAddressZipcode, String customerAddressLabel) {
         this.id = id;
-        this.customerUserId = customerUserId;
+
         this.amountPaid = amountPaid;
         this.date = date;
         this.paymentMethod = paymentMethod;
@@ -47,13 +52,6 @@ public class Order {
         this.id = id;
     }
 
-    public Long getCustomerUserId() {
-        return customerUserId;
-    }
-
-    public void setCustomerUserId(Long customerUserId) {
-        this.customerUserId = customerUserId;
-    }
 
     public Double getAmountPaid() {
         return amountPaid;

@@ -1,14 +1,18 @@
 package com.shadab.Ecommerce;
 
 import org.apache.ibatis.annotations.One;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
 import java.util.Set;
+
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private Long uid;
     @Column(nullable = false,unique = true,length = 45)
     private String  email;
@@ -21,14 +25,43 @@ public class User {
     @Column(nullable = false,length = 64)
     private String password;
 
-   /* @ManyToMany(mappedBy = "User")
-    private Set<Role> roles;
+    private boolean isEnabled;
 
-    @OneToMany(mappedBy = "User")
-    private Set<Seller> sellers;
+    public boolean isEnabled() {
+        return isEnabled;
+    }
 
-    @OneToMany(mappedBy = "User")
-    private Set<Customer> customers;*/
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+ /*   @OneToOne(mappedBy = "users")
+    private Customer customers;
+
+   @OneToOne
+   @JoinColumn(name="user_address")
+   private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @OneToOne(mappedBy = "user")
+    private Seller sellers;*/
+
+
+ /*   @OneToOne(mappedBy = "user")
+    private Role roles;
+*/
+
+
+
+
+
 
     public Long getUid() {
         return uid;
