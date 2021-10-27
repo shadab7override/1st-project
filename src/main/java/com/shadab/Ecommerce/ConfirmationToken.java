@@ -28,6 +28,15 @@ public class ConfirmationToken {
         confirmationToken = UUID.randomUUID().toString();
     }
 
+    public ConfirmationToken(){}
+
+    public ConfirmationToken(long tokenid, String confirmationToken, Date createdDate, User user) {
+        this.tokenid = tokenid;
+        this.confirmationToken = confirmationToken;
+        this.createdDate = createdDate;
+        this.user = user;
+    }
+
     // getters and setters
 
     public long getTokenid() {

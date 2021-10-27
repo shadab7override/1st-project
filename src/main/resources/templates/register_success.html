@@ -12,7 +12,7 @@
         <h3> <a th:href="@{/login}">Click here to login</a> </h3>
     </div>
     <center>
-        <span th:text="'A verification email has been sent to: ' + ${emailId}"></span>
+        <span th:text="'A verification email has been sent to: ' + ${user.email}"></span>
     </center>
 </div>
 </body>

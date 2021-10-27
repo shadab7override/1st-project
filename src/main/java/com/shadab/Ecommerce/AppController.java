@@ -52,14 +52,18 @@ public class AppController {
     }
 
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public Model registerUser(Model model, User user) {
+    @RequestMapping(value="/register", method = RequestMethod.POST)
+    public ModelAndView registerUser(ModelAndView modelAndView, User user)
+    {
 
         User existingUser = repo.findByEmail(user.getEmail());
-        if (existingUser != null) {
-            model.addAttribute("message", "This email already exists!");
-            model.addAttribute("error");
-        } else {
+        if(existingUser != null)
+        {
+            modelAndView.addObject("message","This email already exists!");
+            modelAndView.setViewName("error");
+        }
+        else
+        {
             repo.save(user);
 
             ConfirmationToken confirmationToken = new ConfirmationToken(user);
@@ -69,37 +73,39 @@ public class AppController {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setTo(user.getEmail());
             mailMessage.setSubject("Complete Registration!");
-            mailMessage.setFrom("chand312902@gmail.com");
+            mailMessage.setFrom("uccshadab7@gmail.com");
             mailMessage.setText("To confirm your account, please click here : "
-                    + "http://localhost:8082/confirm-account?token=" + confirmationToken.getConfirmationToken());
+                    +"http://localhost:8082/confirm-account?token="+confirmationToken.getConfirmationToken());
 
             emailSenderService.sendEmail(mailMessage);
 
-            model.addAttribute("emailId", user.getEmail());
+            modelAndView.addObject("email", user.getEmail());
 
-            model.addAttribute("successfulRegisteration");
+            modelAndView.setViewName("successfulRegisteration");
         }
 
-        return model;
+        return modelAndView;
     }
 
-    @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
-    public Model confirmUserAccount(Model model, @RequestParam("token") String confirmationToken) {
+    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView confirmUserAccount(ModelAndView modelAndView, @RequestParam("token")String confirmationToken)
+    {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
-        if (token != null) {
+        if(token != null)
+        {
             User user = repo.findByEmail(token.getUser().getEmail());
             user.setEnabled(true);
             repo.save(user);
-            model.addAttribute("accountVerified");
-        } else {
-            model.addAttribute("message", "The link is invalid or broken!");
-            model.addAttribute("error");
+            modelAndView.setViewName("accountVerified");
+        }
+        else
+        {
+            modelAndView.addObject("message","The link is invalid or broken!");
+            modelAndView.setViewName("error");
         }
 
-
-
-        return model;
+        return modelAndView;
     }
     // getters and setters
 
