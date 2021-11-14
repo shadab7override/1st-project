@@ -45,11 +45,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/register").permitAll()   //this 2 add
+                .antMatchers("/register").permitAll()
                 .antMatchers("/confirm").permitAll()
-
-                .antMatchers("/list_users").authenticated()
-                .anyRequest().permitAll()
+                .antMatchers("/list_users")
+                .permitAll()
                 .and()
                 .formLogin()
                     .usernameParameter("email")
@@ -59,6 +58,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutSuccessUrl("/")
                 .permitAll();
+        http.httpBasic().disable();
+        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+/*
+ http.authorizeRequests()
+      .antMatchers("/").hasAnyAuthority("USER", "CREATOR", "EDITOR", "ADMIN")
+                .antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR").antMatchers("/edit/**")
+                .hasAnyAuthority("ADMIN", "EDITOR").antMatchers("/delete/**").hasAuthority("ADMIN")
+                .antMatchers("/h2-console/**").permitAll().anyRequest().authenticated().and().formLogin().permitAll()
+                .and().logout().permitAll().and().exceptionHandling().accessDeniedPage("/403");
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+
+
+http.httpBasic().disable();
+        http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+
+*/
+
+
 
     }
 }

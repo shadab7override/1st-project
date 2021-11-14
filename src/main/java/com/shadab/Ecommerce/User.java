@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,16 +17,34 @@ public class User {
     private Long uid;
     @Column(nullable = false,unique = true,length = 45)
     private String  email;
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String firstName;
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String middleName;
-    @Column(nullable = false,length = 20)
+    @Column(length = 20)
     private String lastName;
     @Column(nullable = false,length = 64)
     private String password;
 
+    @Column(name="is_enabled")
     private boolean isEnabled;
+
+
+    private String username;
+
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name ="users_roles", joinColumns = @JoinColumn (name="user_id"), inverseJoinColumns = @JoinColumn (name="role_id"))
+    private Set<Role> roles=new HashSet<>();
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public boolean isEnabled() {
         return isEnabled;
@@ -35,20 +54,27 @@ public class User {
         isEnabled = enabled;
     }
 
- /*   @OneToOne(mappedBy = "users")
+    @Column(name = "reset_token")
+    private String resetToken;
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    /*   @OneToOne(mappedBy = "users")
     private Customer customers;
 
-   @OneToOne
-   @JoinColumn(name="user_address")
-   private Address address;
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     @OneToOne(mappedBy = "user")
     private Seller sellers;*/
@@ -57,6 +83,17 @@ public class User {
  /*   @OneToOne(mappedBy = "user")
     private Role roles;
 */
+ @OneToOne
+ @JoinColumn(name="user_address")
+ private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
 
 

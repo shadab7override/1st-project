@@ -23,12 +23,13 @@
       </tr>
       </thead>
       <tbody>
-      <tr th:each="user:${listUser}">
-        <td th:text="${user.id}">User Id</td>
+      <tr th:each="user : ${listUser}">
+        <td th:text="${id}">User Id</td> <!--{agar user.id} krrte h to ni hota kch b show-->
         <td th:text="${user.email}">Email</td>
-        <td th:text="${user.firstName}">firs tName</td>
+        <td th:text="${user.firstName}">first Name</td>
         <td th:text="${user.middleName}">middle Name</td>
         <td th:text="${user.lastName}">last Name</td>
+        <td th:text="${user.username}">Username</td>
 
       </tr>
       </tbody>

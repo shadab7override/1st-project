@@ -1,24 +1,25 @@
-/*
 package com.shadab.Ecommerce;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-public class Category {
+public class Categorye {
     @Id
+    @Column(name="category_id")
     private Long id;
     private String name;
     private Long parentCategoryId;
 
-    @ManyToOne
+ /*   @ManyToOne
     @JoinColumn(name="uid")
     private Set<Product> products;
-
-    @ManyToMany(mappedBy = "Category")
+*/
+    @ManyToMany(mappedBy = "categories")
     private Set<CategoryMetaField> categoryMetaFields;
 
-    public Category(Long id, String name, Long parentCategoryId) {
+
+    public Categorye(Long id, String name, Long parentCategoryId) {
         this.id = id;
         this.name = name;
         this.parentCategoryId = parentCategoryId;
@@ -48,4 +49,3 @@ public class Category {
         this.parentCategoryId = parentCategoryId;
     }
 }
-*/

@@ -1,4 +1,3 @@
-/*
 package com.shadab.Ecommerce;
 
 import javax.persistence.Entity;
@@ -18,9 +17,9 @@ public class Address {
 
 
     @OneToOne(mappedBy="address")
-    private User userId;
+    private User user_id;
 
-    public Address(Long id, String city, String state, String country, String addressLine, Integer zipId, String label, User userId) {
+    public Address(Long id, String city, String state, String country, String addressLine, Integer zipId, String label, User user_id) {
         this.id = id;
         this.city = city;
         this.state = state;
@@ -28,15 +27,15 @@ public class Address {
         this.addressLine = addressLine;
         this.zipId = zipId;
         this.label = label;
-        this.userId = userId;
+        this.user_id = user_id;
     }
 
     public User getUserId() {
-        return userId;
+        return user_id;
     }
 
     public void setUserId(User userId) {
-        this.userId = userId;
+        this.user_id = userId;
     }
 
     public Long getId() {
@@ -97,4 +96,3 @@ public class Address {
 
 
 }
-*/

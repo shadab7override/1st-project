@@ -1,32 +1,28 @@
-/*
 package com.shadab.Ecommerce;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "roles")
 public class Role {
     @Id
-    private String authority;
+    @Column(name="r_id")
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
 
-    @OneToOne
-    @JoinColumn(name="Uid")
-    private User user;
-
-
-    public Role( String authority) {
-
-        this.authority = authority;
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
-
-
-    public String getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
 }
-*/

@@ -22,8 +22,8 @@ public class UserRepositoryTest {
     @Test
     public  void UserRepositoryTest() {
     }
-/*
- @Test
+
+/* @Test
     public void testCreateUser(){
         User user= new User();
         user.setFirstName("Md");
